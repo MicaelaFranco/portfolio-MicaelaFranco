@@ -1364,6 +1364,32 @@
 </script>
 
 <script>
+  /* Favicon con canvas usando Pacifico */
+  document.fonts.ready.then(() => {
+    const c = document.createElement('canvas');
+    c.width = c.height = 64;
+    const ctx = c.getContext('2d');
+    const r = 14;
+    ctx.fillStyle = '#FAC8A4';
+    ctx.beginPath();
+    ctx.moveTo(r,0); ctx.lineTo(64-r,0);
+    ctx.arcTo(64,0,64,r,r); ctx.lineTo(64,64-r);
+    ctx.arcTo(64,64,64-r,64,r); ctx.lineTo(r,64);
+    ctx.arcTo(0,64,0,64-r,r); ctx.lineTo(0,r);
+    ctx.arcTo(0,0,r,0,r); ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = '#E8197A';
+    ctx.font = '34px Pacifico';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('mf', 32, 35);
+    const link = document.createElement('link');
+    link.rel = 'icon'; link.href = c.toDataURL();
+    document.head.appendChild(link);
+  });
+</script>
+
+<script>
   // Controles de video: invisibles por defecto, aparecen al hacer hover
   document.querySelectorAll('.phone-screen video, .laptop-screen video, .nota-thumb video').forEach(function(video) {
     video.removeAttribute('controls');
